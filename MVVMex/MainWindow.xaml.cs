@@ -10,18 +10,20 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Chat.MVVM.Views
+namespace MVVMex
 {
     /// <summary>
-    /// Interaction logic for Chat.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class Chat : Window
+    public partial class MainWindow : Window
     {
-        public Chat()
+        public MainWindow()
         {
             InitializeComponent();
+            DataContext = new ApplicationViewModel();
         }
     }
 }
