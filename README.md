@@ -66,3 +66,7 @@
 ## Полезное
 
 [Консольный чат на UDP сокетах](https://metanit.com/sharp/net/5.3.php)
+[WPF](https://metanit.com/sharp/wpf/1.php)
+[ADO](https://metanit.com/sharp/adonetcore/)
+[EF](https://metanit.com/sharp/efcore/)
+[professorweb.ru_C#](https://professorweb.ru)
