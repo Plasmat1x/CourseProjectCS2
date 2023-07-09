@@ -5,16 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientApp.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" Style="{DynamicResource ControlBaseStyle}">
-
+        Title="MainWindow" Height="450" Width="800" Style="{StaticResource ControlBaseStyle}">
+    
     <Window.Resources>
-        <Style TargetType="Window" BasedOn="{DynamicResource ControlBaseStyle}"/>
-        <Style TargetType="Grid">
-            <Setter Property="Background" Value="#2f2f2f"/>
-        </Style>
-        <Style TargetType="Label">
-            <Setter Property="Foreground" Value="#aaaaaa"/>
-        </Style>
+        <Style TargetType="ListViewItem" BasedOn="{StaticResource ControlBaseStyle}"/>
+        <Style TargetType="ListView" BasedOn="{StaticResource ControlBaseStyle}"/>
+        <Style TargetType="RichTextBox" BasedOn="{StaticResource ControlBaseStyle}"/>
     </Window.Resources>
 
     <Grid>
@@ -29,23 +25,45 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="0" >
-            <Border BorderThickness="2" BorderBrush="#202020"/>
-            <Label Content="Contacts and chats" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <!--Contacts-->
+            <ListView>
+                <!--Replace to bindig-->
+                <ListViewItem Content="1"/>
+                <ListViewItem Content="2"/>
+                <ListViewItem Content="3"/>
+                <ListViewItem Content="4"/>
+            </ListView>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
-            <Border BorderThickness="2" BorderBrush="#202020"/>
-            <Label  Content="Chat messages" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <!--Chat-->
+            <ListView>
+                <!--Replace to bindig-->
+                <ListViewItem Content="msg1"/>
+                <ListViewItem Content="msg2"/>
+                <ListViewItem Content="msg3"/>
+                <ListViewItem Content="msg4"/>
+            </ListView>
         </Grid>
         
         <Grid Grid.Row="1" Grid.Column="0">
-            <Border BorderThickness="2" BorderBrush="#202020"/>
-            <Label Content="Profile Menu" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--Profile-->
+            <Ellipse Height="70" Width="70">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Resources/img/Avatar.jpg"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Grid.Column="1" Text="Profile" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
-
+  
         <Grid Grid.Row="1" Grid.Column="1">
-            <Border BorderThickness="2" BorderBrush="#202020"/>
-            <Label Grid.Row="1" Grid.Column="1" Content="User input" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+            <!--Input-->
+            <RichTextBox/>
         </Grid>
+        
     </Grid>
 </Window>
