@@ -26,23 +26,13 @@
 
         <Grid Grid.Row="0" Grid.Column="0" >
             <!--Contacts-->
-            <ListView>
-                <!--Replace to bindig-->
-                <ListViewItem Content="1"/>
-                <ListViewItem Content="2"/>
-                <ListViewItem Content="3"/>
-                <ListViewItem Content="4"/>
+            <ListView ItemsSource="{Binding chats}">
             </ListView>
         </Grid>
 
         <Grid Grid.Row="0" Grid.Column="1">
             <!--Chat-->
-            <ListView>
-                <!--Replace to bindig-->
-                <ListViewItem Content="msg1"/>
-                <ListViewItem Content="msg2"/>
-                <ListViewItem Content="msg3"/>
-                <ListViewItem Content="msg4"/>
+            <ListView ItemsSource="{Binding selected.Messages}">
             </ListView>
         </Grid>
         

@@ -49,7 +49,7 @@ namespace Server
                     {
                         message = await Reader.ReadLineAsync();
                         if (message == null) continue;
-                        message = $"[{DateTime.Now}] {userName} {message}";
+                        message = $"[{DateTime.Now}] {userName}: {message}";
                         Console.WriteLine(message);
                         await server.BroadcastMessageAsync(message, Id);
                     }

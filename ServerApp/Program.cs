@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Server.Service;
+using ServerApp.Service;
 
-namespace Server
+namespace ServerApp
 {
     class Program
     {
@@ -19,7 +19,8 @@ namespace Server
             AppSettings appSettings = new AppSettings();
             appSettings.ipaddress = config.GetValue<string>("ipaddress");
             appSettings.connectionString = config.GetValue<string>("connectionString");
-            appSettings.port = config.GetValue<int>("port");
+            appSettings.inport = config.GetValue<int>("inport");
+            appSettings.outport = config.GetValue<int>("outport");
 
             Application app = new Application(appSettings);
 

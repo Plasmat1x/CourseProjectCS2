@@ -5,12 +5,13 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Server.Service
+namespace ServerApp.Service
 {
     public class AppSettings
     {
         public string ipaddress { get; set; }
-        public int port { get; set; }
+        public int outport { get; set; }
+        public int inport { get; set; }
         public string connectionString { get; set; }
     }
 }

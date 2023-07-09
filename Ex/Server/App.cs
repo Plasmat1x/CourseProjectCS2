@@ -56,7 +56,7 @@ namespace Server
             {
                 if(client.Id != id)
                 {
-                    await client.Writer.WriteAsync(msg);
+                    await client.Writer.WriteLineAsync(msg);
                     await client.Writer.FlushAsync();
                 }
             }

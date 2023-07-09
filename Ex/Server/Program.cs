@@ -8,6 +8,7 @@
 
             Task.Run(app.ListenAsync);
             string command = "";
+
             do
             {
                 Console.WriteLine("Enter command:");
