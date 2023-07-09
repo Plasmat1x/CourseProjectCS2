@@ -70,4 +70,4 @@
 [WPF](https://metanit.com/sharp/wpf/1.php)
 [ADO](https://metanit.com/sharp/adonetcore/)
 [EF](https://metanit.com/sharp/efcore/)
-[professorweb.ru_C#](https://professorweb.ru)
+[professorweb C#](https://professorweb.ru)
