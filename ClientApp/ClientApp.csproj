@@ -104,5 +104,8 @@
   <ItemGroup>
     <Resource Include="Resources\img\Avatar.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
