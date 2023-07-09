@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "Chat\ClientApp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{CC9FC708-685D-43E7-B823-93CA723ACE65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMex", "MVVMex\MVVMex.csproj", "{27BCEA5C-F02A-4118-B51C-A39CFFE45ED1}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{CC9FC708-685D-43E7-B823-93CA723ACE65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC9FC708-685D-43E7-B823-93CA723ACE65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC9FC708-685D-43E7-B823-93CA723ACE65}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27BCEA5C-F02A-4118-B51C-A39CFFE45ED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27BCEA5C-F02A-4118-B51C-A39CFFE45ED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27BCEA5C-F02A-4118-B51C-A39CFFE45ED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27BCEA5C-F02A-4118-B51C-A39CFFE45ED1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
