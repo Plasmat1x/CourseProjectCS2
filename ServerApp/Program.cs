@@ -19,8 +19,7 @@ namespace ServerApp
             AppSettings appSettings = new AppSettings();
             appSettings.ipaddress = config.GetValue<string>("ipaddress");
             appSettings.connectionString = config.GetValue<string>("connectionString");
-            appSettings.inport = config.GetValue<int>("inport");
-            appSettings.outport = config.GetValue<int>("outport");
+            appSettings.port = config.GetValue<int>("port");
 
             Application app = new Application(appSettings);
 

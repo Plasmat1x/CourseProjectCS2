@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,11 +14,14 @@ namespace ServerApp
     internal class Application
     {
         AppSettings config;
-        IPEndPoint ep;
+
+        TcpListener tcpListener;
 
         public Application(AppSettings config) 
         { 
             this.config = config;
+
+            tcpListener = new TcpListener(IPAddress.Any, config.port);
         }
 
         public void Run()
@@ -34,8 +38,7 @@ namespace ServerApp
         {
             if(config.ipaddress != null && 
                 config.ipaddress.Length > 0 && 
-                config.inport > 0 && 
-                config.outport > 0 && 
+                config.port > 0 && 
                 config.connectionString != null && 
                 config.connectionString.Length > 0)
                 return true;
@@ -51,10 +54,7 @@ namespace ServerApp
 
         private async Task ListenAsync()
         {
-            try
-            {
-                
-            }
+
         }
     }
 }
