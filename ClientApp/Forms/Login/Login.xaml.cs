@@ -1,5 +1,4 @@
-﻿using ClientApp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,23 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace ClientApp.Forms
+namespace ClientApp.Forms.Login
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Login.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Login : Window
     {
-
-        public MainWindow()
+        public Login()
         {
             InitializeComponent();
+        }
 
-            this.Show();
-
-            Login.Login AuthWin = new Login.Login();
-            AuthWin.Owner = this;
-            AuthWin.ShowDialog();
+        private void signup_click(object sender, RoutedEventArgs e)
+        {
+            Signup SignupWin = new Signup();
+            SignupWin.Owner = this;
+            SignupWin.ShowDialog();
         }
     }
 }

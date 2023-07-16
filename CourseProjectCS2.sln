@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientApp", "ClientApp\Clie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServerApp", "ServerApp\ServerApp.csproj", "{7D335BE6-7896-42D6-B42D-86633576324F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67EEE714-64CE-4367-898D-C838408FC2BB}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{0D6370E7-8B87-458C-B045-2803CD3AB070}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{7D335BE6-7896-42D6-B42D-86633576324F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D335BE6-7896-42D6-B42D-86633576324F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D335BE6-7896-42D6-B42D-86633576324F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D6370E7-8B87-458C-B045-2803CD3AB070}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D6370E7-8B87-458C-B045-2803CD3AB070}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D6370E7-8B87-458C-B045-2803CD3AB070}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D6370E7-8B87-458C-B045-2803CD3AB070}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

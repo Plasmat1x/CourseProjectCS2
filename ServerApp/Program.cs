@@ -5,6 +5,7 @@ namespace ServerApp
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
             var configBuilder = new ConfigurationBuilder()

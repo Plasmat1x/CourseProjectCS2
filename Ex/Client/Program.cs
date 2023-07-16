@@ -14,7 +14,10 @@ try
     client.Connect(host, port);
     Reader = new StreamReader(client.GetStream());
     Writer = new StreamWriter(client.GetStream());
-    if (Writer is null || Reader is null) return;
+    if (Writer is null || Reader is null)
+    {
+        return;
+    }
 
     Task.Run(() => ReceiveMessageAsync(Reader));
     await SendMessageAsync(Writer);
@@ -25,6 +28,8 @@ catch (Exception ex)
 }
 Writer?.Close();
 Reader?.Close();
+
+Console.ReadKey();
 
 async Task SendMessageAsync(StreamWriter writer)
 {
@@ -37,7 +42,13 @@ async Task SendMessageAsync(StreamWriter writer)
         string? message = Console.ReadLine();
         await writer.WriteLineAsync(message);
         await writer.FlushAsync();
+
+        if (message == "" || message == null)
+        {
+            break;
+        }
     }
+    client.Close();
 }
 async Task ReceiveMessageAsync(StreamReader reader)
 {
