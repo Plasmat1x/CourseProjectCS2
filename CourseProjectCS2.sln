@@ -10,9 +10,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{67EEE714-64CE-4367-898D-C838408FC2BB}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		Resources\Tasks = Resources\Tasks
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{0D6370E7-8B87-458C-B045-2803CD3AB070}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{0D6370E7-8B87-458C-B045-2803CD3AB070}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
