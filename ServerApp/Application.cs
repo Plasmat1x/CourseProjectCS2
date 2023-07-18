@@ -24,7 +24,7 @@ namespace ServerApp
             cancellationTokenSource = new CancellationTokenSource();
             token = cancellationTokenSource.Token;
 
-            Connection = new SqlConnection(config.connectionString);
+            //Connection = new SqlConnection(config.connectionString);
         }
 
         public void Run()
