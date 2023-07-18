@@ -43,12 +43,16 @@ namespace ServerApp
                         await reciver.SendAsync(writer);
                         */
 
+
+                        //TODO: ReciveMethod -> Get data deserialize at data.name select action -> on action db process
                         int size = await reciver.ReceiveAsync(Reader);
                         Data o = Deserialize(Reader, size);
 
                         Message msg = JsonSerializer.Deserialize<Message>(o.Value.ToString());
 
                         Console.WriteLine($"[{msg.Date.ToString()}] from {msg.Sender} to {msg.Chat}: {msg.Text}");
+
+                        //TODO: SendMethod -> prepare data and on update send data to clients;
 
 
                     }

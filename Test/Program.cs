@@ -93,7 +93,7 @@ namespace TestApp
             Message msg = new Message();
             msg.Id = Guid.NewGuid().ToString();
             msg.Text = message;
-            msg.Sender = Process.GetCurrentProcess().ProcessName + "::" + sender.RemoteEndPoint.ToString();
+            msg.Sender = Process.GetCurrentProcess().ProcessName + "::" + sender.LocalEndPoint.ToString();
             msg.Chat = "Server";
             msg.Date = DateTime.Now;
 

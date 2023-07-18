@@ -1,4 +1,5 @@
-﻿using ServerApp.Service;
+﻿using Microsoft.Data.SqlClient;
+using ServerApp.Service;
 using System.Net;
 using System.Net.Sockets;
 
@@ -15,11 +16,15 @@ namespace ServerApp
 
         private List<Client> clients = new List<Client>();
 
+        public SqlConnection Connection { get; }
+
         public Application(AppSettings config)
         {
             this.config = config;
             cancellationTokenSource = new CancellationTokenSource();
             token = cancellationTokenSource.Token;
+
+            Connection = new SqlConnection(config.connectionString);
         }
 
         public void Run()
