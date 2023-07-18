@@ -1,6 +1,8 @@
-﻿using System.Net;
+﻿using System.Diagnostics;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.Json;
 
 namespace TestApp
 {
@@ -45,8 +47,9 @@ namespace TestApp
                     string? msg = Console.ReadLine();
                     if (msg != null)
                     {
+                        //sender.Send(Encoding.UTF8.GetBytes(msg));
 
-                        sender.Send(Encoding.UTF8.GetBytes(msg));
+                        SendMessage(msg);
                     }
                 }
                 catch (Exception ex)
@@ -73,5 +76,69 @@ namespace TestApp
             }
             else Console.WriteLine(message);
         }
+        private byte[] Serialize(Data o)
+        {
+            return Encoding.UTF8.GetBytes(JsonSerializer.Serialize(o));
+        }
+        private Data Deserialize(byte[] arr, int count)
+        {
+            Data? data;
+            data = JsonSerializer.Deserialize<Data>(Encoding.UTF8.GetString(arr, 0, count));
+
+            return data;
+        }
+
+        private void SendMessage(string message)
+        {
+            Message msg = new Message();
+            msg.Id = Guid.NewGuid().ToString();
+            msg.Text = message;
+            msg.Sender = Process.GetCurrentProcess().ProcessName + "::" + sender.RemoteEndPoint.ToString();
+            msg.Chat = "Server";
+            msg.Date = DateTime.Now;
+
+            Data data = new Data();
+            data.Name = "Message";
+            data.Value = (object)msg;
+
+            sender.Send(Serialize(data));
+        }
+
+        private void ReciveMessage()
+        {
+            byte[] data = new byte[1024];
+            int count = sender.Receive(data);
+
+            Data o = Deserialize(data, count);
+
+            if (o == null)
+            {
+                return;
+            }
+
+            Message msg = o.Value as Message;
+
+            Console.WriteLine(o.Name);
+            Console.WriteLine(msg.Text);
+        }
+    }
+
+
+
+    [Serializable]
+    internal class Message
+    {
+        public string Id { get; set; }
+        public string Sender { get; set; }
+        public string Chat { get; set; }
+        public string Text { get; set; }
+        public DateTime Date { get; set; }
+    }
+
+    [Serializable]
+    internal class Data
+    {
+        public string Name { get; set; }
+        public object Value { get; set; }
     }
 }

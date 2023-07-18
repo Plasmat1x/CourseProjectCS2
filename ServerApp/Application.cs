@@ -6,14 +6,14 @@ namespace ServerApp
 {
     internal class Application
     {
-        AppSettings config;
+        private AppSettings config;
 
-        Socket Listener;
+        private Socket Listener;
 
-        CancellationTokenSource cancellationTokenSource;
-        CancellationToken token;
+        private CancellationTokenSource cancellationTokenSource;
+        private CancellationToken token;
 
-        List<Client> clients = new List<Client>();
+        private List<Client> clients = new List<Client>();
 
         public Application(AppSettings config)
         {
@@ -42,6 +42,18 @@ namespace ServerApp
                 }
             }
 
+        }
+
+        public void RemoveConnection(string id)
+        {
+            Client client = clients.FirstOrDefault(x => x.Id == id);
+
+            if (client != null)
+            {
+                clients.Remove(client);
+            }
+
+            client?.Close();
         }
 
         private bool TestConfiguratuin()
@@ -83,13 +95,10 @@ namespace ServerApp
                 Listener.Bind(new IPEndPoint(IPAddress.Parse(config.ipaddress), config.port));
                 Listener.Listen();
 
-                Console.WriteLine("start listen thread");
                 while (!token.IsCancellationRequested)
                 {
-                    Socket client = Listener.Accept();
-                    await ProcessAsync(client);
+                    await ProcessAsync(Listener.Accept());
                 }
-                Console.WriteLine("end listen thread");
             }
             catch (SocketException e)
             {
@@ -111,12 +120,6 @@ namespace ServerApp
             Task.Run(clientobject.ProcessAsync);
         }
 
-        private void CloseConnection(Socket client)
-        {
-            client.Shutdown(SocketShutdown.Both);
-            client.Close();
-        }
-
         private void Shutdown()
         {
             cancellationTokenSource.Cancel();
@@ -133,16 +136,6 @@ namespace ServerApp
             Listener.Close();
         }
 
-        public void RemoveConnection(string id)
-        {
-            Client client = clients.FirstOrDefault(x => x.Id == id);
 
-            if (client != null)
-            {
-                clients.Remove(client);
-            }
-
-            client?.Close();
-        }
     }
 }
