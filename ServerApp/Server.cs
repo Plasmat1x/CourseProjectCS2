@@ -1,11 +1,14 @@
-﻿using System.Net;
+﻿using Microsoft.EntityFrameworkCore;
+using ServerApp.Models;
+using ServerApp.Service;
+using System.Net;
 using System.Net.Sockets;
 
 namespace ServerApp
 {
     internal class Server
     {
-        string addr;
+        string? addr;
         int port;
 
         CancellationToken token;
@@ -13,11 +16,17 @@ namespace ServerApp
         private Socket Listener;
         private List<Client> clients = new List<Client>();
 
-        public Server(string addr, int port, CancellationToken token)
+        AppDbContext appDbContext;
+
+        public Server(AppSettings conf, CancellationToken token)
         {
-            this.addr = addr;
-            this.port = port;
+            this.addr = conf.ipaddress;
+            this.port = conf.port;
             this.token = token;
+
+            var OptBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var Opt = OptBuilder.UseSqlServer(conf.connectionString).Options;
+            appDbContext = new AppDbContext(Opt);
         }
 
         public void RemoveConnection(string id)

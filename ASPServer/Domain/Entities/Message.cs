@@ -1,6 +1,6 @@
-﻿namespace ServerApp.Models
+﻿namespace ASPServer.Domain.Entities
 {
-    internal class Message
+    public class Message
     {
         public int Id { get; set; }
         public int To_id { get; set; }
