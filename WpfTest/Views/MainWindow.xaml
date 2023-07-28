@@ -19,32 +19,32 @@
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <ListBox Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible" 
-                     ItemsSource="{x:Static Fonts.SystemFontFamilies}"/>
+                     ItemsSource="{Binding contacts}"/>
 
 
             <StackPanel Grid.Row="1" Orientation="Horizontal"  Background="Gray">
-                <Label Content="Placeholder"/>
+                <Button Content="Add" Width="60" Command="{Binding AddUserCommand}" CommandParameter="{Binding uname}"/>
+                <Button Content="Remove" Width="60"/>
             </StackPanel>
 
         </Grid>
 
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"/>
+                <RowDefinition Height="10*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
             <ListBox  Grid.Row="0" ScrollViewer.VerticalScrollBarVisibility="Visible"
                       ItemsSource="{Binding messages}"/>
 
-
             <StackPanel Grid.Row="1">
                 <TextBox x:Name="input_field"/>
-                <Button Content="Send" Height="20" Command="{Binding AddCommand}" CommandParameter="{Binding ElementName=input_field, Path=Text}"/>
+                <Button Content="Send" Height="20" Command="{Binding AddMessageCommand}" CommandParameter="{Binding ElementName=input_field, Path=Text}"/>
             </StackPanel>
         </Grid>
     </Grid>
