@@ -13,11 +13,6 @@ namespace ASPServer.Domain
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<User>().HasData(new[]{
-                new User { Id = 1, Username = "Admin" },
-                new User { Id = 2, Username = "Bobr" }
-            });
         }
 
         public DbSet<User> Users;

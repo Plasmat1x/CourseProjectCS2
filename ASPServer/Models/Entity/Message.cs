@@ -8,7 +8,7 @@
         public string Content { get; set; }
         public DateTime Created_at { get; set; }
 
-        public User To_user { get; set; } = null!;
-        public User From_user { get; set; } = null!;
+        public virtual User To_user { get; set; }
+        public virtual User From_user { get; set; }
     }
 }
