@@ -1,4 +1,6 @@
-﻿namespace ServerApp.Models
+﻿using System;
+
+namespace WpfTest.Models.Data
 {
     public class Message
     {
@@ -10,5 +12,10 @@
 
         public User To_user { get; set; }
         public User From_user { get; set; }
+
+        public override string ToString()
+        {
+            return $"[{Created_at}] From {From_id}: {Content}";
+        }
     }
 }

@@ -3,8 +3,11 @@ using ServerApp.Service;
 
 namespace ServerApp
 {
+
     class Program
     {
+        static public AppSettings appSettings { get; set; }
+
         [STAThread]
         static void Main(string[] args)
         {
@@ -17,7 +20,7 @@ namespace ServerApp
 
             var config = configBuilder.GetSection("Application");
 
-            AppSettings appSettings = new AppSettings();
+            appSettings = new AppSettings();
             appSettings.ipaddress = config.GetValue<string>("ipaddress");
             appSettings.connectionString = config.GetValue<string>("connectionString");
             appSettings.port = config.GetValue<int>("port");

@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ServerApp.Models;
-using ServerApp.Service;
+﻿using ServerApp.Models;
 using System.Net;
 using System.Net.Sockets;
 
@@ -18,15 +16,16 @@ namespace ServerApp
 
         AppDbContext appDbContext;
 
-        public Server(AppSettings conf, CancellationToken token)
+        public Server(CancellationToken token)
         {
-            this.addr = conf.ipaddress;
-            this.port = conf.port;
+            this.addr = Program.appSettings.ipaddress;
+            this.port = Program.appSettings.port;
             this.token = token;
 
-            var OptBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            var Opt = OptBuilder.UseSqlServer(conf.connectionString).Options;
-            appDbContext = new AppDbContext(Opt);
+            appDbContext = new AppDbContext();
+
+            appDbContext.Users.Add(new User { Name = "Admin" });
+            appDbContext.SaveChanges();
         }
 
         public void RemoveConnection(string id)

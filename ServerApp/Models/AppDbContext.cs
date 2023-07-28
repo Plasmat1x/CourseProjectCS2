@@ -1,26 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Entity;
 
 namespace ServerApp.Models
 {
     internal class AppDbContext : DbContext
     {
-        string constr;
+        static public string constr { get; set; }
 
-        public AppDbContext()
+        public AppDbContext() : base(Program.appSettings.connectionString)
         {
 
         }
-        public AppDbContext(DbContextOptions options) : base(options)
+
+        protected override void OnModelCreating(DbModelBuilder builder)
         {
 
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-
-        }
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
         }
 
         //DbSets

@@ -32,7 +32,7 @@ namespace ServerApp.Controllers
 
         public void UPDATE(Message entity)
         {
-            Context.Messages.Update(entity);
+            //Context.Messages.Update(entity);
             Context.SaveChanges();
         }
     }

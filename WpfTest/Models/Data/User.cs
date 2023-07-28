@@ -1,4 +1,6 @@
-﻿namespace ASPServer.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace WpfTest.Models.Data
 {
     public class User
     {

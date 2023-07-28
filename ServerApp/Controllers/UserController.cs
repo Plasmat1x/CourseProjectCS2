@@ -31,7 +31,7 @@ namespace ServerApp.Controllers
 
         public void UPDATE(User entity)
         {
-            Context.Users.Update(entity);
+            //Context.Users.Update(entity);
             Context.SaveChanges();
         }
     }

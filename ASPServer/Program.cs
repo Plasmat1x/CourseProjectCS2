@@ -1,17 +1,23 @@
+using ASPServer.Domain;
+using Microsoft.EntityFrameworkCore;
+
 namespace ASPServer
 {
-    class Program
+    public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-        }
+            var builder = WebApplication.CreateBuilder(args);
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            var conntectioString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("DefaultConnection string not found");
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conntectioString));
+
+
+            var app = builder.Build();
+
+            app.UseRouting();
+
+            app.Run();
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace ServerApp
             cancellationTokenSource = new CancellationTokenSource();
             token = cancellationTokenSource.Token;
 
-            server = new Server(config, token);
+            server = new Server(token);
         }
 
         public void Run()

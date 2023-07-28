@@ -1,4 +1,4 @@
-﻿namespace ASPServer.Domain.Entities
+﻿namespace ASPServer.Models.Entity
 {
     public class Message
     {
