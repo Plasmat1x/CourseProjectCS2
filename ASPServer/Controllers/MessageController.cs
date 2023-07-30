@@ -1,32 +1,28 @@
-﻿using ASPServer.Domain;
+﻿using ASPServer.Models;
 using ASPServer.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ASPServer.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
     public class MessageController : Controller
     {
-        private readonly AppDbContext context;
+        private DataManager dm;
 
-        public MessageController(AppDbContext context)
+        public MessageController(DataManager dm)
         {
-            this.context = context;
+            this.dm = dm;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Message>>> GetMessagesFromChat(int chat_id)
+        public ActionResult<IEnumerable<Message>> GetMessagesFromChat(int chat_id)
         {
-            return await context.Messages.ToListAsync();
+            return dm.MessageRepo.GetMessages(chat_id).ToList();
         }
 
         [HttpPost]
         public async Task<IActionResult> SendMessage(Message message)
         {
-            context.Messages.Add(message);
-            await context.SaveChangesAsync();
+            dm.MessageRepo.AddMessage(message);
             return Ok();
         }
 
@@ -35,10 +31,12 @@ namespace ASPServer.Controllers
         {
             Message msg = new Message
             {
-                From_id = context.Users.FirstOrDefault(x => x.Username == from).Id,
+                From_user = dm.UserRepo.GetUser(from),
+                To_user = dm.UserRepo.GetUser(to),
+                Content = text,
+                Created_at = DateTime.UtcNow,
             };
-            context.Messages.Add(msg);
-            await context.SaveChangesAsync();
+            dm.MessageRepo.AddMessage(msg);
             return Ok();
         }
     }

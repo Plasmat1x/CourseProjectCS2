@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.ObjectModel;
+using System.Windows;
 using WpfTest.Models;
 using WpfTest.Models.Data;
 using WpfTest.Views;
@@ -12,10 +13,14 @@ namespace WpfTest.ViewModels
     {
         User current;
         readonly MessageModel message_model = new MessageModel();
-        readonly UserModel user_model = new UserModel();
+        readonly ContactModel contact_model = new ContactModel();
 
         public string uname { get; set; }
-        public string currentUser { get; set; }
+        public User currentUser { get; set; }
+        public User selUser { get; set; }
+        public Message selmsg { get; set; }
+
+        string host = "https://localhost:"
 
         public MainWindowVM()
         {
@@ -24,12 +29,12 @@ namespace WpfTest.ViewModels
             {
                 if (!string.IsNullOrEmpty(uname))
                 {
-                    currentUser = uname;
+                    currentUser = new User { Name = uname };
                 }
             }
 
             message_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
-            user_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
+            contact_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
 
             AddMessageCommand = new DelegateCommand<string>(str =>
             {
@@ -38,12 +43,10 @@ namespace WpfTest.ViewModels
                 {
                     Message msg = new Message
                     {
-                        From_id = 1,
-                        To_id = 2,
                         Content = str,
                         Created_at = DateTime.Now,
-                        From_user = new User { Name = currentUser },
-                        To_user = null
+                        From_user = currentUser,
+                        To_user = selUser
                     };
 
                     message_model.AddMessage(msg);
@@ -63,14 +66,22 @@ namespace WpfTest.ViewModels
                 {
                     if (!string.IsNullOrEmpty(uname))
                     {
-                        user_model.AddUser(new User { Name = uname });
+                        contact_model.AddUser(uname);
                     }
                 }
             });
 
-            RemoveUserCommand = new DelegateCommand<int?>(id =>
+            RemoveUserCommand = new DelegateCommand<string>(username =>
             {
-                if (id.HasValue) user_model.RemoveUser(id.Value);
+                if (string.IsNullOrEmpty(username)) contact_model.RemoveUser(username);
+            });
+
+            showmsg = new DelegateCommand<string>(msg =>
+            {
+                if (selmsg != null)
+                {
+                    MessageBox.Show($"{selmsg.Id}\n{selmsg.Content}\n{selmsg.Created_at}\n{selmsg.From_user?.Name}\n{selmsg.To_user?.Name}");
+                }
             });
         }
 
@@ -79,9 +90,11 @@ namespace WpfTest.ViewModels
         public DelegateCommand<int?> RemoveMessageCommand { get; }
 
         public DelegateCommand<string> AddUserCommand { get; }
-        public DelegateCommand<int?> RemoveUserCommand { get; }
+        public DelegateCommand<string> RemoveUserCommand { get; }
+
+        public DelegateCommand<string> showmsg { get; }
 
         public ReadOnlyObservableCollection<Message> messages => message_model.ro_messages;
-        public ReadOnlyObservableCollection<User> contacts => user_model.ro_contacts;
+        public ReadOnlyObservableCollection<User> contacts => contact_model.ro_contacts;
     }
 }

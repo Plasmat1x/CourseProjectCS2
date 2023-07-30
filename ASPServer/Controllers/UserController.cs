@@ -1,32 +1,50 @@
-﻿using ASPServer.Domain;
+﻿using ASPServer.Models;
 using ASPServer.Models.Entity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ASPServer.Controllers
 {
     public class UserController : Controller
     {
-        private readonly AppDbContext context;
+        private DataManager dm;
 
-        public UserController(AppDbContext context)
+        public UserController(DataManager dm)
         {
-            this.context = context;
+            this.dm = dm;
         }
 
         [HttpGet]
-        public async Task<ActionResult<User>> GetUser(string uname)
+        public ActionResult<User> GetUser(string uname)
         {
-            return await context.Users.FirstOrDefaultAsync(x => x.Username == uname);
+            return dm.UserRepo.GetUser(uname);
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> AddUser(string uname)
+        public IActionResult AddUser(string uname)
         {
-            User u = new User { Username = uname };
-            context.Add(u);
-            await context.SaveChangesAsync();
-            return await context.Users.FirstOrDefaultAsync(x => x.Username == uname);
+
+            User u = dm.UserRepo.GetUser(uname);
+
+            if (u != null)
+            {
+                return Conflict();
+            }
+
+            dm.UserRepo.AddUser(uname);
+            return Ok();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteUser(int id)
+        {
+            dm.UserRepo.DeleteUser(id);
+            return Ok();
+        }
+
+        [HttpGet]
+        public ActionResult<User> Test()
+        {
+            return dm.UserRepo.GetUser("Admin");
         }
     }
 }
