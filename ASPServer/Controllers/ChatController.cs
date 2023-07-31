@@ -27,12 +27,12 @@ namespace ASPServer.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateChat(User owner, User target)
+        public IActionResult CreateChat(User requester)
         {
-            dm.ChatRepo.AddChat(new Chat
+            dm.ChatRepo.AddChat(requester, new Chat
             {
                 CreatedAt = DateTime.UtcNow,
-                Users = new List<User> { owner, target },
+                Users = new List<User> { requester }
             });
             return Ok();
         }

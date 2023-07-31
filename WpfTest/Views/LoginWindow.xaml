@@ -1,14 +1,20 @@
-﻿<Window x:Class="WpfTest.Views.Login"
+﻿<Window x:Class="WpfTest.Views.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfTest.Views"
+        xmlns:data="clr-namespace:WpfTest.ViewModels"
         mc:Ignorable="d"
         Title="Login" Height="120" Width="200">
+    
+    <Window.DataContext>
+        <data:LoginVM/>
+    </Window.DataContext>
+    
     <StackPanel>
         <Label Content="Username"/>
         <TextBox x:Name="Username"/>
-        <Button Content="Login" Height="20" Name="btOK" Click="btOK_Click"/>
+        <Button Content="Login" Height="20" Command="{Binding Login}" CommandParameter="{Binding ElementName=Username, Path=Text}" IsDefault="True"/>
     </StackPanel>
 </Window>

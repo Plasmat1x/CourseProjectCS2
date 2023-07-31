@@ -13,9 +13,16 @@ namespace ASPServer.Models.Repository.EF
             this.context = context;
         }
 
-        public void AddChat(Chat chat)
+        public void AddChat(User requester, Chat chat)
         {
+            chat.Users.Add(requester);
             context.Chats.Add(chat);
+            context.SaveChanges();
+        }
+
+        public void AddUserToChat(int chatid, User user)
+        {
+            context.Chats.FirstOrDefault(x => x.Id == chatid).Users.Add(user);
             context.SaveChanges();
         }
 
@@ -24,9 +31,9 @@ namespace ASPServer.Models.Repository.EF
             return context.Chats.FirstOrDefault(c => c.Id == id);
         }
 
-        public IQueryable<Chat>? GetChats(string username)
+        public IQueryable<Chat>? GetChats(User requester)
         {
-            return context.Chats.Where(x => x.Users.Contains(new User { Username = username }));
+            return context.Chats.Where(x => x.Users.Contains(requester));
         }
 
         public void RemoveChat(int id)

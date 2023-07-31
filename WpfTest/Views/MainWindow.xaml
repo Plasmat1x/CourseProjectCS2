@@ -26,11 +26,15 @@
                      ItemsSource="{Binding contacts}" SelectedItem="{Binding selUser}"/>
 
 
-            <StackPanel Grid.Row="1" Orientation="Horizontal"  Background="Gray">
-                <Button Content="Add" Width="60" Command="{Binding AddUserCommand}" CommandParameter="{Binding uname}"/>
-                <Button Content="Remove" Width="60"/>
-                <Label Content="{Binding currentUser}"/>
-                <Button Content="!" Command="{Binding showmsg}" CommandParameter="{Binding selmsg.Content}"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical"  Background="Gray">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Add" Width="60" Command="{Binding AddUserCommand}" CommandParameter="{Binding uname}"/>
+                    <Button Content="Remove" Width="60"/>
+                    <Label Content="{Binding CurrentUser}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    
+                </StackPanel>
             </StackPanel>
 
         </Grid>
