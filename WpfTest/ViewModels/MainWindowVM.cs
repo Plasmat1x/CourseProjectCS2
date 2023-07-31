@@ -20,7 +20,7 @@ namespace WpfTest.ViewModels
         public User selUser { get; set; }
         public Message selmsg { get; set; }
 
-        string host = "https://localhost:"
+        string host = "https://localhost:7141/";
 
         public MainWindowVM()
         {

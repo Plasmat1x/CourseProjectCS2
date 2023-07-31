@@ -40,11 +40,5 @@ namespace ASPServer.Controllers
             dm.UserRepo.DeleteUser(id);
             return Ok();
         }
-
-        [HttpGet]
-        public ActionResult<User> Test()
-        {
-            return dm.UserRepo.GetUser("Admin");
-        }
     }
 }
