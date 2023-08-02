@@ -1,9 +1,3 @@
-using ASPServer.Domain;
-using ASPServer.Models;
-using ASPServer.Models.Repository.Abstract;
-using ASPServer.Models.Repository.EF;
-using Microsoft.EntityFrameworkCore;
-
 namespace ASPServer
 {
     public class Program
