@@ -16,28 +16,19 @@ namespace ASPServer.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Message>> GetMessagesFromChat(int chat_id)
         {
-            return dm.MessageRepo.GetMessages(chat_id).ToList();
+            return NotFound(null);
         }
 
         [HttpPost]
         public async Task<IActionResult> SendMessage(Message message)
         {
-            dm.MessageRepo.AddMessage(message);
-            return Ok();
+            return NotFound(null);
         }
 
         [HttpPost]
         public async Task<IActionResult> SendMessage(string from, string to, string text)
         {
-            Message msg = new Message
-            {
-                From_user = dm.UserRepo.GetUser(from),
-                To_user = dm.UserRepo.GetUser(to),
-                Content = text,
-                Created_at = DateTime.UtcNow,
-            };
-            dm.MessageRepo.AddMessage(msg);
-            return Ok();
+            return NotFound(null);
         }
     }
 }

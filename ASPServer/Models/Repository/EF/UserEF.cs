@@ -15,11 +15,7 @@ namespace ASPServer.Models.Repository.EF
 
         public void AddUser(string username)
         {
-            if (!context.Users.Contains(new User { Username = username }))
-            {
-                context.Users.Add(new User { Username = username });
-                context.SaveChanges();
-            }
+
         }
 
         public void DeleteUser(int id)
@@ -30,7 +26,7 @@ namespace ASPServer.Models.Repository.EF
 
         public User? GetUser(string username)
         {
-            return context.Users.FirstOrDefault(x => x.Username == username);
+            return null;
         }
     }
 }

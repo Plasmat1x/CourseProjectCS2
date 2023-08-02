@@ -15,14 +15,11 @@ namespace ASPServer.Models.Repository.EF
 
         public void AddChat(User requester, Chat chat)
         {
-            chat.Users.Add(requester);
-            context.Chats.Add(chat);
             context.SaveChanges();
         }
 
         public void AddUserToChat(int chatid, User user)
         {
-            context.Chats.FirstOrDefault(x => x.Id == chatid).Users.Add(user);
             context.SaveChanges();
         }
 
@@ -33,12 +30,11 @@ namespace ASPServer.Models.Repository.EF
 
         public IQueryable<Chat>? GetChats(User requester)
         {
-            return context.Chats.Where(x => x.Users.Contains(requester));
+            return null;
         }
 
         public void RemoveChat(int id)
         {
-            context.Chats.Remove(new Chat { Id = id });
             context.SaveChanges();
         }
     }

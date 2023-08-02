@@ -5,7 +5,7 @@ using WpfTest.Models.Data;
 
 namespace WpfTest.ViewModels
 {
-    public class MainWindowVM : BindableBase
+    public class MainWindowVMb : BindableBase
     {
         readonly MessageModel message_model = new MessageModel();
         readonly ContactModel contact_model = new ContactModel();
@@ -15,7 +15,7 @@ namespace WpfTest.ViewModels
         public User selUser { get; set; }
         public Message selmsg { get; set; }
 
-        public MainWindowVM()
+        public MainWindowVMb()
         {
             message_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
             contact_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };

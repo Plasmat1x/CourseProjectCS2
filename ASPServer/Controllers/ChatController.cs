@@ -16,24 +16,18 @@ namespace ASPServer.Controllers
         [HttpGet]
         public ActionResult<Chat> GetChat(int id)
         {
-            return dm.ChatRepo.GetChat(id);
+            return null;
         }
 
         [HttpPost]
         public IActionResult DeleteChat(int id)
         {
-            dm.ChatRepo.RemoveChat(id);
             return Ok();
         }
 
         [HttpPost]
         public IActionResult CreateChat(User requester)
         {
-            dm.ChatRepo.AddChat(requester, new Chat
-            {
-                CreatedAt = DateTime.UtcNow,
-                Users = new List<User> { requester }
-            });
             return Ok();
         }
 

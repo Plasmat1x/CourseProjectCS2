@@ -4,10 +4,11 @@
     {
         public int Id { get; set; }
         public string Content { get; set; }
-        public DateTime Created_at { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public int FromUserId { get; set; }
+        public int ChatId { get; set; }
 
-        public virtual User? To_user { get; set; }
-        public virtual User? From_user { get; set; }
-        public virtual Chat? Chat { get; set; }
+        public User FromUser { get; set; }
+        public Chat Chat { get; set; }
     }
 }
