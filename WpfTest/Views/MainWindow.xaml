@@ -28,9 +28,9 @@
 
             <StackPanel Grid.Row="1" Orientation="Vertical"  Background="Gray">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Add" Width="60" Command="{Binding AddUserCommand}" CommandParameter="{Binding uname}"/>
+                    <Button Content="Add" Width="60"/>
                     <Button Content="Remove" Width="60"/>
-                    <Label Content="{Binding CurrentUser}"/>
+                    <Label Content="{Binding CurrentUser.Name}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     

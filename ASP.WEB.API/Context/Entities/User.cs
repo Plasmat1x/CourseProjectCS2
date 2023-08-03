@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace WpfTest.Models.Data
+﻿namespace ASP.WEB.API.Context.Entities
 {
     public class User
     {
@@ -9,6 +6,6 @@ namespace WpfTest.Models.Data
         public string Name { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public ICollection<UserChat> UserChats { get; set; }
-
+        public ICollection<Contact> Contacts { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using WpfTest.Models.Data;
 
 namespace WpfTest.ViewModels
 {
-    public class MainWindowVM : BindableBase
+    public class MainWindowVMb : BindableBase
     {
         User current;
         readonly MessageModel message_model = new MessageModel();
@@ -23,7 +23,7 @@ namespace WpfTest.ViewModels
 
         HttpClient client = new HttpClient();
 
-        public MainWindowVM()
+        public MainWindowVMb()
         {
             message_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };
             contact_model.PropertyChanged += (s, e) => { RaisePropertyChanged(e.PropertyName); };

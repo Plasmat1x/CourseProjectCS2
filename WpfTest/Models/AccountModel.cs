@@ -6,9 +6,9 @@ using WpfTest.Models.Data;
 
 namespace WpfTest.Models
 {
-    internal class AccountModel : BindableBase
+    class AccountModel : BindableBase
     {
-        public User user { get; private set; }
+        public User user { get; private set; } = Service.User;
 
         public AccountModel()
         {
@@ -17,7 +17,7 @@ namespace WpfTest.Models
 
         public void Login(string username)
         {
-            var response = Service.Client.GetAsync($"{Service.Host}/user?uname={username}");
+            var response = Service.Client.GetAsync($"{Service.Host}/api/User/User?Name={username}");
             try
             {
                 response.Wait();
@@ -25,9 +25,11 @@ namespace WpfTest.Models
                 {
                     var json = response.Result.Content.ReadAsStringAsync();
                     json.Wait();
+
+                    MessageBox.Show(json.Result.ToString());
                     if (string.IsNullOrEmpty(json.Result))
                     {
-                        user = JsonSerializer.Deserialize<User>(json.Result);
+                        Service.User = JsonSerializer.Deserialize<User>(json.Result);
                         RaisePropertyChanged(user.Name);
                     }
                 }
@@ -40,6 +42,7 @@ namespace WpfTest.Models
 
         public void Logout()
         {
+            Service.User = null;
             RaisePropertyChanged(user.Name);
         }
     }
