@@ -14,5 +14,10 @@ namespace WpfTest.Data
 
         public int OwnerId { get; set; }
         public User? Owner { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

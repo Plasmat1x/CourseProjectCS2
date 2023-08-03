@@ -34,14 +34,14 @@ namespace ASP.WEB.API.Controllers
             return Ok(List);
         }
 
-        [HttpGet("UserChats")]
+        [HttpGet("Chats")]
         public async Task<IActionResult> GetUserChats(int userid, CancellationToken ct)
         {
             var u = await (from uc in context.UserChats
                            join chat in context.Chats on uc.ChatId equals chat.Id
                            join user in context.Users on uc.UserId equals user.Id
                            where user.Id == userid
-                           select uc)
+                           select chat)
                            .ToArrayAsync(ct);
 
             return Ok(u);
@@ -60,7 +60,7 @@ namespace ASP.WEB.API.Controllers
             return Ok(res);
         }
 
-        [HttpGet("GetContacts")]
+        [HttpGet("Contacts")]
         public async Task<IActionResult> GetContacts(int userid, CancellationToken ct)
         {
             var res = await (from con in context.Contacts
@@ -73,8 +73,22 @@ namespace ASP.WEB.API.Controllers
             return Ok(res);
         }
 
-        [HttpGet("GetMessagesFromChat")]
+        [HttpGet("Messages")]
         public async Task<IActionResult> GetMsgFromChat(int chatid, CancellationToken ct)
+        {
+            var res = await (from msg in context.Messages
+                             join chat in context.Chats on msg.ChatId equals chat.Id
+                             where chat.Id == chatid
+                             orderby msg.CreatedAt ascending
+                             select msg)
+                             .Include(x => x.Sender)
+                             .ToArrayAsync(ct);
+
+            return Ok(res);
+        }
+
+        [HttpGet("t")]
+        public async Task<IActionResult> t(int chatid, CancellationToken ct)
         {
             var res = await (from msg in context.Messages
                              join chat in context.Chats on msg.ChatId equals chat.Id

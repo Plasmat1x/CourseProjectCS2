@@ -12,10 +12,10 @@ namespace WpfTest
     /// </summary>
     public partial class MainWindow : Window
     {
-        public ICollection<UserChat> Chats { get; set; }
+        public ICollection<Chat> Chats { get; set; }
         public ICollection<Message> Messages { get; set; }
 
-        public UserChat SelectedChat { get; set; }
+        public Chat SelectedChat { get; set; }
         public User CurrentUser { get; set; }
         public Message SelectedMessage { get; set; }
 
@@ -27,16 +27,17 @@ namespace WpfTest
             if (lw.ShowDialog() == true)
             {
                 CurrentUser = Service.User;
-                Chats = Service.Client.GetFromJsonAsync<ICollection<UserChat>>($"{Service.Host}/api/User/UserChats?userid={Service.User.Id}").Result;
+                Chats = Service.Client.GetFromJsonAsync<ICollection<Chat>>($"{Service.Host}/api/User/Chats?userid={Service.User.Id}").Result;
                 ChatsLB.ItemsSource = Chats;
             }
         }
         private void ListBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            SelectedChat = ChatsLB.SelectedItem as UserChat;
+            SelectedChat = ChatsLB.SelectedItem as Chat;
             if (SelectedChat != null)
             {
-                Messages = Service.Client.GetFromJsonAsync<ICollection<Message>>($"{Service.Host}/api/User/GetMessageFromChat?chatid={SelectedChat.ChatId}").Result;
+                Messages = Service.Client.GetFromJsonAsync<ICollection<Message>>($"{Service.Host}/api/User/Messages?chatid={SelectedChat.Id}").Result;
+                MessagesLB.ItemsSource = Messages;
             }
         }
     }
