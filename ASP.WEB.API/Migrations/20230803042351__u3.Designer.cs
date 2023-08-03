@@ -4,6 +4,7 @@ using ASP.WEB.API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.WEB.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230803042351__u3")]
+    partial class _u3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,21 +53,21 @@ namespace ASP.WEB.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3308),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(854),
                             Name = "oto",
                             OwnerId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3313),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(860),
                             Name = "ptp",
                             OwnerId = 2
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3314),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(861),
                             Name = "ptp2",
                             OwnerId = 2
                         });
@@ -95,35 +98,35 @@ namespace ASP.WEB.API.Migrations
                         {
                             OwnerId = 1,
                             Name = "Bobr",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3373),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(937),
                             UserId = 2
                         },
                         new
                         {
                             OwnerId = 1,
                             Name = "Test",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3375),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(941),
                             UserId = 3
                         },
                         new
                         {
                             OwnerId = 1,
                             Name = "Usver",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3377),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(942),
                             UserId = 4
                         },
                         new
                         {
                             OwnerId = 2,
                             Name = "Admin",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3378),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(943),
                             UserId = 1
                         },
                         new
                         {
                             OwnerId = 3,
                             Name = "Admin",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3379),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(944),
                             UserId = 1
                         });
                 });
@@ -136,7 +139,7 @@ namespace ASP.WEB.API.Migrations
                     b.Property<int>("ChatId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreatedAt")
+                    b.Property<DateTime>("CratedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Text")
@@ -154,28 +157,28 @@ namespace ASP.WEB.API.Migrations
                         {
                             SenderId = 1,
                             ChatId = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3469),
+                            CratedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(973),
                             Text = "Hellow every one"
                         },
                         new
                         {
                             SenderId = 2,
                             ChatId = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3471),
+                            CratedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(976),
                             Text = "Hi Admin"
                         },
                         new
                         {
                             SenderId = 2,
                             ChatId = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3472),
+                            CratedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(977),
                             Text = "What happens"
                         },
                         new
                         {
                             SenderId = 3,
                             ChatId = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3473),
+                            CratedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(978),
                             Text = "Has trouble"
                         });
                 });
@@ -203,25 +206,25 @@ namespace ASP.WEB.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3121),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(498),
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3134),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(511),
                             Name = "Bobr"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3135),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(568),
                             Name = "Test"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3136),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(570),
                             Name = "Usver"
                         });
                 });
@@ -248,49 +251,49 @@ namespace ASP.WEB.API.Migrations
                         {
                             UserId = 1,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3339)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(893)
                         },
                         new
                         {
                             UserId = 2,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3341)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(896)
                         },
                         new
                         {
                             UserId = 3,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3342)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(897)
                         },
                         new
                         {
                             UserId = 4,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3343)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(898)
                         },
                         new
                         {
                             UserId = 1,
                             ChatId = 2,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3344)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(899)
                         },
                         new
                         {
                             UserId = 2,
                             ChatId = 2,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3345)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(900)
                         },
                         new
                         {
                             UserId = 2,
                             ChatId = 3,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3346)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(901)
                         },
                         new
                         {
                             UserId = 3,
                             ChatId = 3,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3347)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 23, 51, 595, DateTimeKind.Local).AddTicks(902)
                         });
                 });
 

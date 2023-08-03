@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace WpfTest.Models.Data
+﻿namespace ASP.WEB.API.Context.Entities
 {
     public class Message
     {
@@ -10,10 +8,5 @@ namespace WpfTest.Models.Data
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public Chat Chat { get; set; }
         public User Sender { get; set; }
-
-        public override string ToString()
-        {
-            return $"[{CreatedAt}] From {Sender.Name}: {Text}";
-        }
     }
 }

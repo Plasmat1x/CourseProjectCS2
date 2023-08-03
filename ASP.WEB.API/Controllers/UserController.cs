@@ -1,5 +1,4 @@
 ﻿using ASP.WEB.API.Context;
-using ASP.WEB.API.Context.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,14 +17,14 @@ namespace ASP.WEB.API.Controllers
         [HttpGet("User")]
         public async Task<IActionResult> GetUser(string Name, CancellationToken ct)
         {
-            User user = await context.Users.FirstOrDefaultAsync(x => x.Name == Name, ct);
+            var res = await context.Users.FirstOrDefaultAsync(x => x.Name == Name, ct);
 
-            if (user == null)
+            if (res == null)
             {
                 return NotFound($"User with {Name} not founded");
             }
 
-            return Ok(user);
+            return Ok(res);
         }
 
         [HttpGet("Users")]
@@ -36,12 +35,12 @@ namespace ASP.WEB.API.Controllers
         }
 
         [HttpGet("UserChats")]
-        public async Task<IActionResult> GetUserChats(string Name, CancellationToken ct)
+        public async Task<IActionResult> GetUserChats(int userid, CancellationToken ct)
         {
             var u = await (from uc in context.UserChats
                            join chat in context.Chats on uc.ChatId equals chat.Id
                            join user in context.Users on uc.UserId equals user.Id
-                           where user.Name == Name
+                           where user.Id == userid
                            select uc)
                            .ToArrayAsync(ct);
 
@@ -62,14 +61,28 @@ namespace ASP.WEB.API.Controllers
         }
 
         [HttpGet("GetContacts")]
-        public async Task<IActionResult> GetContacts(string Name, CancellationToken ct)
+        public async Task<IActionResult> GetContacts(int userid, CancellationToken ct)
         {
             var res = await (from con in context.Contacts
                              join owner in context.Users on con.OwnerId equals owner.Id
                              join user in context.Users on con.UserId equals user.Id
-                             where owner.Name == Name
+                             where owner.Id == userid
                              orderby con.User.Name
-                             select con).ToArrayAsync(ct);
+                             select con).Include(x => x.User).ToArrayAsync(ct);
+
+            return Ok(res);
+        }
+
+        [HttpGet("GetMessagesFromChat")]
+        public async Task<IActionResult> GetMsgFromChat(int chatid, CancellationToken ct)
+        {
+            var res = await (from msg in context.Messages
+                             join chat in context.Chats on msg.ChatId equals chat.Id
+                             where chat.Id == chatid
+                             orderby msg.CreatedAt ascending
+                             select msg)
+                             .Include(x => x.Sender)
+                             .ToArrayAsync(ct);
 
             return Ok(res);
         }

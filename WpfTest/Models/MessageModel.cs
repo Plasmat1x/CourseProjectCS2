@@ -18,11 +18,5 @@ namespace WpfTest.Models
             messages.Add(message);
             RaisePropertyChanged("messages.Count");
         }
-
-        public void RemoveMessage(int id)
-        {
-            messages.Remove(new Message { Id = id });
-            RaisePropertyChanged("messages.Count");
-        }
     }
 }

@@ -4,6 +4,7 @@ using ASP.WEB.API.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ASP.WEB.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230803040154__u2")]
+    partial class _u2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,22 +53,15 @@ namespace ASP.WEB.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3308),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6935),
                             Name = "oto",
                             OwnerId = 1
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3313),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6938),
                             Name = "ptp",
-                            OwnerId = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3314),
-                            Name = "ptp2",
                             OwnerId = 2
                         });
                 });
@@ -95,88 +91,36 @@ namespace ASP.WEB.API.Migrations
                         {
                             OwnerId = 1,
                             Name = "Bobr",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3373),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(7052),
                             UserId = 2
                         },
                         new
                         {
                             OwnerId = 1,
                             Name = "Test",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3375),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(7054),
                             UserId = 3
                         },
                         new
                         {
                             OwnerId = 1,
                             Name = "Usver",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3377),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(7055),
                             UserId = 4
                         },
                         new
                         {
                             OwnerId = 2,
                             Name = "Admin",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3378),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(7056),
                             UserId = 1
                         },
                         new
                         {
                             OwnerId = 3,
                             Name = "Admin",
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3379),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(7057),
                             UserId = 1
-                        });
-                });
-
-            modelBuilder.Entity("ASP.WEB.API.Context.Entities.Message", b =>
-                {
-                    b.Property<int>("SenderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChatId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SenderId", "ChatId");
-
-                    b.HasIndex("ChatId");
-
-                    b.ToTable("Messages");
-
-                    b.HasData(
-                        new
-                        {
-                            SenderId = 1,
-                            ChatId = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3469),
-                            Text = "Hellow every one"
-                        },
-                        new
-                        {
-                            SenderId = 2,
-                            ChatId = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3471),
-                            Text = "Hi Admin"
-                        },
-                        new
-                        {
-                            SenderId = 2,
-                            ChatId = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3472),
-                            Text = "What happens"
-                        },
-                        new
-                        {
-                            SenderId = 3,
-                            ChatId = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3473),
-                            Text = "Has trouble"
                         });
                 });
 
@@ -203,25 +147,25 @@ namespace ASP.WEB.API.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3121),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6732),
                             Name = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3134),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6747),
                             Name = "Bobr"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3135),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6748),
                             Name = "Test"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3136),
+                            CreatedAt = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6748),
                             Name = "Usver"
                         });
                 });
@@ -248,49 +192,37 @@ namespace ASP.WEB.API.Migrations
                         {
                             UserId = 1,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3339)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6959)
                         },
                         new
                         {
                             UserId = 2,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3341)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6960)
                         },
                         new
                         {
                             UserId = 3,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3342)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6962)
                         },
                         new
                         {
                             UserId = 4,
                             ChatId = 1,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3343)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6963)
                         },
                         new
                         {
                             UserId = 1,
                             ChatId = 2,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3344)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6964)
                         },
                         new
                         {
                             UserId = 2,
                             ChatId = 2,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3345)
-                        },
-                        new
-                        {
-                            UserId = 2,
-                            ChatId = 3,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3346)
-                        },
-                        new
-                        {
-                            UserId = 3,
-                            ChatId = 3,
-                            AddedTime = new DateTime(2023, 8, 3, 13, 18, 2, 12, DateTimeKind.Local).AddTicks(3347)
+                            AddedTime = new DateTime(2023, 8, 3, 11, 1, 54, 81, DateTimeKind.Local).AddTicks(6964)
                         });
                 });
 
@@ -324,25 +256,6 @@ namespace ASP.WEB.API.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ASP.WEB.API.Context.Entities.Message", b =>
-                {
-                    b.HasOne("ASP.WEB.API.Context.Entities.Chat", "Chat")
-                        .WithMany("Messages")
-                        .HasForeignKey("ChatId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("ASP.WEB.API.Context.Entities.User", "Sender")
-                        .WithMany()
-                        .HasForeignKey("SenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Chat");
-
-                    b.Navigation("Sender");
-                });
-
             modelBuilder.Entity("ASP.WEB.API.Context.Entities.UserChat", b =>
                 {
                     b.HasOne("ASP.WEB.API.Context.Entities.Chat", "Chat")
@@ -364,8 +277,6 @@ namespace ASP.WEB.API.Migrations
 
             modelBuilder.Entity("ASP.WEB.API.Context.Entities.Chat", b =>
                 {
-                    b.Navigation("Messages");
-
                     b.Navigation("UserChats");
                 });
 
