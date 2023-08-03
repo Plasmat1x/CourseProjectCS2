@@ -1,7 +1,7 @@
 ﻿using Prism.Mvvm;
 using System.Collections.ObjectModel;
 using System.Linq;
-using WpfTest.Models.Data;
+using WpfTest.Data;
 
 namespace WpfTest.Models
 {

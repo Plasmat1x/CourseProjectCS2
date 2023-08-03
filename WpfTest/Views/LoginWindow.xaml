@@ -6,15 +6,13 @@
         xmlns:local="clr-namespace:WpfTest.Views"
         xmlns:data="clr-namespace:WpfTest.ViewModels"
         mc:Ignorable="d"
+        x:Name="LoginWnd"
         Title="Login" Height="150" Width="300">
-    
-    <Window.DataContext>
-        <data:LoginVM/>
-    </Window.DataContext>
     
     <StackPanel Margin="3,3,3,3">
         <Label Content="Username" Margin="0,0,3,3"/>
-        <TextBox x:Name="Username" Margin="0,0,3,3" />
-        <Button Content="Login" Margin="0,0,3,3" Command="{Binding Login}" CommandParameter="{Binding ElementName=Username, Path=Text}" IsDefault="True"/>
+        <TextBox x:Name="Username" Margin="0,0,3,3"/>
+        <Button Content="Login" Margin="0,0,3,3" IsDefault="True" Click="Button_Click"/>
+        <Label Content="{Binding Username}" Margin="0,0,3,3"/>
     </StackPanel>
 </Window>

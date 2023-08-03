@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WpfTest.Models.Data
+namespace WpfTest.Data
 {
     public class Contact
     {

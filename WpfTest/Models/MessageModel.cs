@@ -1,6 +1,6 @@
 ﻿using Prism.Mvvm;
 using System.Collections.ObjectModel;
-using WpfTest.Models.Data;
+using WpfTest.Data;
 
 namespace WpfTest.Models
 {

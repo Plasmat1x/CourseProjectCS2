@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Net.Http;
-using WpfTest.Models.Data;
+using WpfTest.Data;
 
 namespace WpfTest.Models
 {
