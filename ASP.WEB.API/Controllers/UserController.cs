@@ -1,4 +1,5 @@
 ﻿using ASP.WEB.API.Context;
+using ASP.WEB.API.Context.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -87,18 +88,18 @@ namespace ASP.WEB.API.Controllers
             return Ok(res);
         }
 
-        [HttpGet("t")]
-        public async Task<IActionResult> t(int chatid, CancellationToken ct)
+        [HttpPost("Create")]
+        public async Task<IActionResult> CreateUser(string Username, CancellationToken ct)
         {
-            var res = await (from msg in context.Messages
-                             join chat in context.Chats on msg.ChatId equals chat.Id
-                             where chat.Id == chatid
-                             orderby msg.CreatedAt ascending
-                             select msg)
-                             .Include(x => x.Sender)
-                             .ToArrayAsync(ct);
+            if (await context.Users.FirstOrDefaultAsync(x => x.Name == Username, ct) != null)
+            {
+                return NotFound($"{Username} already exist");
+            }
 
-            return Ok(res);
+            await context.Users.AddAsync(new User { Name = Username, CreatedAt = DateTime.Now }, ct);
+            await context.SaveChangesAsync(ct);
+
+            return Ok();
         }
     }
 }
